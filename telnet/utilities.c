@@ -820,8 +820,10 @@ printsub(char direction, unsigned char *pointer, int length)
 				}
 				putc(pointer[i], NetTrace);
 			    } else {
-				fprintf(NetTrace, "\" %03o " + noquote,
-							pointer[i]);
+				if (!noquote)
+				    fprintf(NetTrace, "\" %03o ", pointer[i]);
+				else
+				    fprintf(NetTrace, "%03o ", pointer[i]);
 				noquote = 2;
 			    }
 			    break;

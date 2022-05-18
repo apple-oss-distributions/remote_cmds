@@ -874,8 +874,10 @@ printsub(char direction, unsigned char *pointer, int length)
 				}
 				output_data("%c", pointer[i]);
 			    } else {
-				output_data("\" %03o " + noquote,
-							pointer[i]);
+				if (!noquote)
+				    output_data("\" %03o ", pointer[i]);
+				else
+				    output_data("%03o ", pointer[i]);
 				noquote = 2;
 			    }
 			    break;

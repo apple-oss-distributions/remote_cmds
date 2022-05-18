@@ -442,7 +442,7 @@ send_do(int option, int init)
 			set_his_want_state_will(option);
 		do_dont_resp[option]++;
 	}
-	output_data((const char *)doopt, option);
+	output_data(fmtcheck((const char *)doopt, "%c"), option);
 
 	DIAG(TD_OPTIONS, printoption("td: send do", option));
 }
@@ -649,7 +649,7 @@ send_dont(int option, int init)
 		set_his_want_state_wont(option);
 		do_dont_resp[option]++;
 	}
-	output_data((const char *)dont, option);
+	output_data(fmtcheck((const char *)dont, "%c"), option);
 
 	DIAG(TD_OPTIONS, printoption("td: send dont", option));
 }
@@ -796,7 +796,7 @@ send_will(int option, int init)
 		set_my_want_state_will(option);
 		will_wont_resp[option]++;
 	}
-	output_data((const char *)will, option);
+	output_data(fmtcheck((const char *)will, "%c"), option);
 
 	DIAG(TD_OPTIONS, printoption("td: send will", option));
 }
@@ -952,7 +952,7 @@ send_wont(int option, int init)
 		set_my_want_state_wont(option);
 		will_wont_resp[option]++;
 	}
-	output_data((const char *)wont, option);
+	output_data(fmtcheck((const char *)wont, "%c"), option);
 
 	DIAG(TD_OPTIONS, printoption("td: send wont", option));
 }
